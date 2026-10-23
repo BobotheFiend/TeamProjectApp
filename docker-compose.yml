@@ -1,0 +1,16 @@
+# A local MySQL for trying the production database setup:  docker compose up -d
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: task_board_db
+      MYSQL_USER: taskboard
+      MYSQL_PASSWORD: taskboard
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
